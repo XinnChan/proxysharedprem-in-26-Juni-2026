@@ -20,7 +20,7 @@ def fetch_proxies():
 
     # URL API proxy
     proxy_urls = '''
-    https://api.proxies.is/scraped?token=9h6sAGg56801DH7T875d2&timeout=15000&excludeASN=&includeASN=&excludeCountry=&includeCountry=ID&type=
+    https://api.proxies.is/scraped?token=9h6sAGg56801DH7T875d2&timeout=15000&excludeASN=&includeASN=&excludeCountry=&includeCountry=IN&type=
     '''.splitlines()
     #https://prem-proxy.vercel.app/sharedprem-buat-jualan.txt
     #https://api.proxyscrape.com/v4/free-proxy-list/get?request=display_proxies&protocol=http&proxy_format=ipport&format=text&anonymity=all&timeout=20000
