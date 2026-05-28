@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XCDDOS Proxy Scraper List Premium</title>
+    <style>
+        /* Gaya umum body */
+        body {
+            font-family: "Orbitron", Arial, sans-serif; /* Font futuristik */
+            margin: 0;
+            padding: 0;
+            color: #00ffcc; /* Neon cyan untuk teks */
+            background: linear-gradient(135deg, #290a59, #6a00c9);
+            height: 100vh;
+            display: flex;
+            justify-content: flex-start; /* Teks di sisi kiri */
+            align-items: flex-start; /* Mulai dari atas */
+            text-align: left; /* Teks rata kiri */
+        }
+
+        /* Efek bercahaya untuk teks */
+        body, .error, pre {
+            text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc;
+        }
+
+        /* Gaya untuk pesan error */
+        .error {
+            color: #ff073a; /* Merah neon */
+            font-weight: bold;
+            text-shadow: 0 0 10px #ff073a, 0 0 20px #ff073a, 0 0 30px #ff073a;
+        }
+
+        /* Gaya teks proxy */
+        pre {
+            font-family: "Courier New", monospace;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            width: 100%; /* Lebar penuh */
+            height: 100%; /* Tinggi penuh */
+            overflow: auto; /* Scroll jika teks terlalu panjang */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #00ffcc; /* Neon cyan */
+        }
+
+        /* Menambahkan animasi flicker */
+        @keyframes flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                opacity: 1;
+            }
+            20%, 24%, 55% {
+                opacity: 0.4;
+            }
+        }
+
+        body, .error, pre {
+            animation: flicker 2s infinite;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% else %}
+        <pre id="proxy-list">{{ proxies }}</pre>
+    {% endif %}
+
+    <script>
+        // Ambil elemen dengan ID "proxy-list"
+        const proxyListElement = document.getElementById("proxy-list");
+        
+        // Cek apakah data proxy ada
+        if (proxyListElement) {
+            // Ambil teks dari elemen dan hitung jumlah baris
+            const proxyData = proxyListElement.textContent.trim();
+            const proxyLines = proxyData.split("\n");
+            const totalProxies = proxyLines.filter(line => line.trim() !== "").length; // Hapus baris kosong
+
+            setTimeout(() => {
+                document.title = `${totalProxies} Proxy IPs, Update Every 1 Minutes`;
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
